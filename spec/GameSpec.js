@@ -46,4 +46,12 @@ describe("Game", function() {
       expect(game.takeTurn(2)).toContain('X');
     });
   });
+
+  describe("#switchPlayer", function(){
+
+    it("changes the value of the currentPlayer attribute", function(){
+      game.switchPlayer();
+      expect(game.currentPlayer).toEqual(game._players[1]);
+    });
+  });
 });

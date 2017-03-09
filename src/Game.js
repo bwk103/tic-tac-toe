@@ -16,6 +16,7 @@ Game.prototype.takeTurn = function(cell){
   } else {
     chosenCell.content = "O";
   }
+  this.switchPlayer();
   return this.viewGrid();
 };
 
@@ -27,4 +28,12 @@ Game.prototype.viewGrid = function(){
     string += " \t-------------\n";
     string += "\t" + this.grid.cells[6].content + "|" + this.grid.cells[7].content + "|" + this.grid.cells[8].content + "\n";
   return string;
+};
+
+Game.prototype.switchPlayer = function(){
+  if (this.currentPlayer == this._players[0]) {
+    this.currentPlayer = this._players[1];
+  } else {
+    this.currentPlayer = this._players[0];
+  }
 };
