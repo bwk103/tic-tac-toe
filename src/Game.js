@@ -11,6 +11,9 @@ Game.prototype.startGame = function(){
 
 Game.prototype.takeTurn = function(cell){
   var chosenCell = this.grid.cells[cell];
+  if (chosenCell.content !== null) {
+    throw "This square has already been taken!";
+  }
   if (this.currentPlayer == this._players[0]) {
     chosenCell.content = "X";
   } else {
