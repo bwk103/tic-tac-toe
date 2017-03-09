@@ -3,6 +3,8 @@ function Game() {
   this._players = [new Player("player1"), new Player("player2")];
   this.grid = new Grid();
   this.currentPlayer = this._players[0];
+  this.numberOfTurns = 0;
+  this.gameOver = false;
 }
 
 Game.prototype.startGame = function(){
@@ -19,7 +21,9 @@ Game.prototype.takeTurn = function(cell){
   } else {
     chosenCell.content = "O";
   }
+  this.numberOfTurns += 1;
   this.switchPlayer();
+  this.checkStatus();
   return this.viewGrid();
 };
 
@@ -38,5 +42,11 @@ Game.prototype.switchPlayer = function(){
     this.currentPlayer = this._players[1];
   } else {
     this.currentPlayer = this._players[0];
+  }
+};
+
+Game.prototype.checkStatus = function(){
+  if (this.numberOfTurns == 9){
+    this.gameOver = true;
   }
 };

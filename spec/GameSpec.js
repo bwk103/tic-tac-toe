@@ -18,6 +18,14 @@ describe("Game", function() {
     it("has a grid object", function(){
       expect(game.grid).toEqual(jasmine.any(Grid));
     });
+
+    it("has a numberofTurns attribute", function(){
+      expect(game.numberOfTurns).toEqual(0);
+    });
+
+    it("has a gameOver attribute which is set to false", function(){
+      expect(game.gameOver).toEqual(false);
+    });
   });
 
 
@@ -45,6 +53,11 @@ describe("Game", function() {
     it("returns a copy of the revised board", function(){
       expect(game.takeTurn(2)).toContain('X');
     });
+
+    it("increases the numberOfTurns arrtibute by one", function(){
+      game.takeTurn(3);
+      expect(game.numberOfTurns).toEqual(1);
+    });
   });
 
   describe("#switchPlayer", function(){
@@ -52,6 +65,16 @@ describe("Game", function() {
     it("changes the value of the currentPlayer attribute", function(){
       game.switchPlayer();
       expect(game.currentPlayer).toEqual(game._players[1]);
+    });
+  });
+
+  describe("#checkStatus", function(){
+
+    it("sets the gameOver attribute to true", function(){
+      for (var i = 0; i < 9; i++) {
+        game.takeTurn(i);
+      }
+      expect(game.gameOver).toEqual(true);
     });
   });
 });
