@@ -1,7 +1,8 @@
 function Game() {
 
-  this._players = [];
+  this._players = [new Player("player1"), new Player("player2")];
   this.grid = new Grid();
+  this.currentPlayer = this._players[0];
 }
 
 Game.prototype.startGame = function(){
@@ -10,7 +11,11 @@ Game.prototype.startGame = function(){
 
 Game.prototype.takeTurn = function(cell){
   var chosenCell = this.grid.cells[cell];
-  chosenCell.content = "X";
+  if (this.currentPlayer == this._players[0]) {
+    chosenCell.content = "X";
+  } else {
+    chosenCell.content = "O";
+  }
   return this.viewGrid();
 };
 

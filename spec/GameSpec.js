@@ -6,9 +6,13 @@ describe("Game", function() {
 
   describe("when initialized", function(){
 
-    it("has an empty array for players", function() {
+    it("has an array for players", function() {
       expect(game._players).toEqual(jasmine.any(Array));
-      expect(game._players.length).toEqual(0);
+      expect(game._players.length).toEqual(2);
+    });
+
+    it("sets a currentPlayer attribute", function(){
+      expect(game.currentPlayer).toEqual(game._players[0]);
     });
 
     it("has a grid object", function(){
