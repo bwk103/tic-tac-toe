@@ -2,6 +2,7 @@ describe("Cell", function() {
 
   beforeEach(function() {
     cell = new Cell([1, 1]);
+    cell2 = new Cell([2, 0]);
   });
 
   describe("when initialized", function(){

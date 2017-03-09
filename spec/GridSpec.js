@@ -10,10 +10,4 @@ describe("Grid", function(){
       expect(grid.cells.length).toBe(9);
     });
   });
-
-
-
-
-
-
 });
